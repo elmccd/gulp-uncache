@@ -61,11 +61,11 @@ Will result in:
 </body>
 </html>
 ```
-### With others plugins
+### With other plugins
 ```javascript
 var gulp = require('gulp');
 var usemin = require('gulp-usemin');
-var uncache = require('./index.js');
+var uncache = require('gulp-uncache');
 
 gulp.task('default', function () {
     return gulp.src('src/index.html')
