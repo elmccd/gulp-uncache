@@ -29,8 +29,6 @@ function replaceFileName(line, append) {
     output.push(parts[0], type + '="');
     parts2 = parts[1].split('"');
     output.push(parts2[0], '?', append, '"', parts2[1]);
-    console.log(line);
-    console.log(output.join(''));
     return output.join('');
 }
 
