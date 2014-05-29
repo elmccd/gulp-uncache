@@ -5,13 +5,12 @@
  * Copyright (c) 2014 Maciej Dudziński
  * Licensed under the MIT license.
  */
-/* global require */
 'use strict';
 var through = require('through2');
 var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
 
-const PLUGIN_NAME = 'gulp-uncache'
+var PLUGIN_NAME = 'gulp-uncache';
 
 function replaceFileName(line, append) {
     var parts,
@@ -71,7 +70,6 @@ function unCache() {
 
         this.push(file);
         return callback();
-
     });
 
     // returning the file stream
