@@ -132,6 +132,9 @@ default: `time`
 
 ## Changelog
 
+#####0.1.3
+- added append option
+
 #####0.1.2
 - fixed multi line blocks
 - fixed parsing lines with attributes
