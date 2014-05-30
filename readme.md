@@ -1,8 +1,8 @@
-# gulp-uncache
+# gulp-uncache  [![NPM version][npm-image]][npm-url] 
 
 > Append unique string to paths in html files to force refresh user's cache
 
-At actual state supported are only tags with `src=""` and `href=""` attributes with strict quotes `"` and limiters `<!--uncache-->` `<!--enduncache-->`
+Supported tags with `src` or `href` attributes with strict quotes `"` and limiters `<!--uncache-->` `<!--enduncache-->`
 
 ## Install
 
@@ -31,7 +31,9 @@ var uncache = require('gulp-uncache');
 
 gulp.task('default', function () {
 	return gulp.src('src/index.html')
-		.pipe(uncache())
+		.pipe(uncache({
+		    append: 'example'
+		}))
 		.pipe(gulp.dest('dist'));
 });
 ```
@@ -62,7 +64,7 @@ gulp.task('default', function () {
     <meta charset="UTF-8">
     <title></title>
     
-    <link rel="stylesheet" href="style.css?1401390721617"/>
+    <link rel="stylesheet" href="style.css?example"/>
     
 </head>
 <body>

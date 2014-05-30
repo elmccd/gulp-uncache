@@ -8,7 +8,7 @@ gulp.task('default', function () {
             js: []
         }))
         .pipe(uncache({
-            append: 'bazinga'
+            append: 'time'
         }))
         .pipe(gulp.dest('dist'));
 });
