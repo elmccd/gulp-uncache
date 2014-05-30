@@ -1,5 +1,6 @@
 # gulp-uncache
-![NPM version](https://d25lcipzij17d.cloudfront.net/badge.png?id=js&type=3d&v=0.1.3)
+[![NPM version](https://d25lcipzij17d.cloudfront.net/badge.png?id=js&type=3d&v=0.1.3)](https://www.npmjs.org/package/gulp-uncache)
+
 
 > Append unique string to paths in html files to force refresh user's cache
 
