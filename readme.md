@@ -2,15 +2,26 @@
 
 > Append unique string to paths in html files to force refresh user's cache
 
-At actual state supported are only tags with `src=""` and `href=""` attributes with strict quotes `"`
+At actual state supported are only tags with `src=""` and `href=""` attributes with strict quotes `"` and limiters `<!--uncache-->` `<!--enduncache-->`
 
 ## Install
 
 ```bash
 $ npm install --save-dev gulp-uncache
 ```
+##Effect
+```html
+Before:
+<!--uncache-->
+<script src="app.js"></script>
+<link rel="stylesheet" href="style.css"/>
+<!--enduncache-->
 
-## Usage
+After:
+<script src="app.js?1401461036930"></script>
+<link rel="stylesheet" href="style.css?1401461036930"/>
+```
+## Example
 
 ### Basic
 ```javascript
