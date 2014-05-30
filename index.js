@@ -9,41 +9,79 @@
 var PLUGIN_NAME = 'gulp-uncache',
     through = require('through2'),
     gutil = require('gulp-util'),
+    md5 = require('blueimp-md5').md5,
+    fs = require('fs'),
+    path = require('path'),
     PluginError = gutil.PluginError,
     alreadyBeeped,
     changed,
     config = {
-        append: 'time'
+        append: 'time',
+        distDir: './',
+        srcDir: './',
+        rename: false
     };
+
+function swapValue(line, filename, append) {
+    console.log(config);
+    if(config.rename) {
+        var filebase = filename.split('/').reverse()[0].split('.')[0];
+        var extension = filename.split('/').reverse()[0].split('.').slice(1).join('.');
+        var dir = filename.split('/').slice(0, -1).join('/');
+
+        var newFileName = (dir ? dir + '/' : '') + filebase + '_' + append + '.' + extension;
+        console.log(newFileName);
+        mkdirRecursive(path.dirname((path.normalize(path.join(config.distDir, filename)))));
+        fs.createReadStream(path.join(config.srcDir, filename)).pipe(fs.createWriteStream(path.join(config.distDir, newFileName)));
+        return line.replace(filename, newFileName);
+
+    } else {
+        return line.replace(filename, filename + '?' + append);
+    }
+}
 
 function replaceFileName(line, append) {
     var parts,
-        parts2,
-        output = [],
-        type;
+        filename,
+        regexp,
+        filePath;
 
     if (line.indexOf('src=') > 0) {
-        type = 'src';
+        regexp = /<.*\s+src=['"](.+)['"].*>/;
     } else if (line.indexOf('href=') > 0) {
-        type = 'href';
+        regexp = /<.*\s+href=['"](.+)['"].*>/;
     } else {
         return line;
     }
 
-    if (append === 'time') {
-        append = new Date().getTime();
-    }
-
-
     try {
-        parts = line.split(type + '="');
-        output.push(parts[0], type + '="');
-        parts2 = parts[1].split('"');
-        output.push(parts2[0], '?', append, '"', parts2.slice(1).join('"'));
+        parts = line.split(regexp);
+        filename = parts[1];
         changed++;
-        return output.join('');
+        console.log(append);
+        if (append === 'hash') {
+            filePath = path.join(config.srcDir, filename);
+            var fileExist = fs.existsSync(filePath);
+            if(!fileExist) {
+                gutil.log(gutil.colors.red("Couldn't find file:"), filePath);
+                return line;
+            }
+            var file = fs.readFileSync(filePath);
+            if (file) {
+                return swapValue(line, filename, md5(file).substr(0,10));
+            } else {
+                gutil.log(gutil.colors.red("Couldn't read file:"), filePath);
+                return line;
+            }
+
+        } else if (append === 'time') {
+            return swapValue(line, filename, new Date().getTime());
+        }
+        return line.replace(filename, filename + '?' + append);
+
     } catch (err) {
         gutil.log(gutil.colors.red("Couldn't parse line: (skipped)"), line);
+        console.error(err);
         if (!alreadyBeeped) {
             alreadyBeeped = true;
             gutil.beep();
@@ -56,7 +94,7 @@ function replaceFileName(line, append) {
 
 function proceed(content) {
 
-    var parts = content.split('<!--uncache-->'),
+    var parts = content.split(/<!--\s*uncache\s*-->/),
         output = [];
 
     output.push(parts[0]);
@@ -64,7 +102,7 @@ function proceed(content) {
 
     //foreach block
     parts.forEach(function (element) {
-        var parts2 = element.split('<!--enduncache-->');
+        var parts2 = element.split(/<!--\s*enduncache\s*-->/);
         var lines = parts2[0].split('\n');
         lines.forEach(function (element) {
             output.push(replaceFileName(element, config.append));
@@ -75,6 +113,20 @@ function proceed(content) {
     return output.join('');
 }
 
+function mkdirRecursive(dir) {
+    if(fs.existsSync(path.normalize(dir))) {
+        return false;
+    }
+    var dirs = path.normalize(dir).split(path.sep),
+        i,
+        _path;
+    for (i = 0; i < dirs.length; i += 1) {
+        _path = path.normalize(dirs.slice(0, i + 1).join('/'));
+        if(!fs.existsSync(_path)) {
+            fs.mkdirSync(_path);
+        }
+    }
+}
 
 // Plugin level function(dealing with files)
 function unCache(params) {

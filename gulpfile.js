@@ -6,9 +6,14 @@ gulp.task('default', function () {
     return gulp.src('src/index.html')
         .pipe(usemin({
             js: []
-        }))
-        .pipe(uncache({
-            append: 'time'
+        })).pipe(uncache({
+            append: 'hash',
+            rename: true,
+            srcDir: 'src',
+            distDir: 'dist'
+        })).pipe(uncache({
+            append: 'hash',
+            srcDir: 'src'
         }))
         .pipe(gulp.dest('dist'));
 });

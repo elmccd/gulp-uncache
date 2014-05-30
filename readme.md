@@ -1,10 +1,10 @@
 # gulp-uncache
-[![NPM version](https://d25lcipzij17d.cloudfront.net/badge.png?id=js&type=3d&v=0.1.3)](https://www.npmjs.org/package/gulp-uncache)
+[![NPM version](https://d25lcipzij17d.cloudfront.net/badge.png?id=js&type=3d&v=0.2.0)](https://www.npmjs.org/package/gulp-uncache)
 
 
-> Append unique string to paths in html files to force refresh user's cache
+> Append unique string to paths in html files to force refresh user's cache.
 
-Supported tags with `src` or `href` attributes with strict quotes `"` and limiters `<!--uncache-->` `<!--enduncache-->`
+Supported tags with `src` or `href` attributes.
 
 ## Install
 
@@ -20,9 +20,61 @@ Before:
 <!--enduncache-->
 
 After:
-<script src="app.js?1401461036930"></script>
-<link rel="stylesheet" href="style.css?1401461036930"/>
+<script src="index.js?1401482624657"></script>
+<link rel="stylesheet" href="style.css?1401482624658"/>
+
+After: (rename: true, append: 'hash')
+<script src="index_28995472d0.js"></script>
+<link rel="stylesheet" href="style_46fa2c8d60.css"/>
 ```
+
+##Options
+
+###append
+
+
+Type `String`
+
+
+default: `time`
+> String to append or one from:
+
+
+> `time` - append actual time stamp
+
+> `hash` - append md5 hash of file (prevent unnecessary refreshing file) **need correct srcDir & distDir**
+
+
+###rename
+
+
+Type `Boolean`
+
+
+default: `false`
+> If set to true rename file otherwise append string as url query string
+
+
+###srcDir
+
+
+Type `String`
+
+
+default: `./`
+> Path to dir with source files
+
+
+###distDir
+
+
+Type `String`
+
+
+default: `./`
+> Path to dir where renamed files will be saved
+
+
 ## Examples
 
 ### Basic
@@ -34,7 +86,10 @@ var uncache = require('gulp-uncache');
 gulp.task('default', function () {
 	return gulp.src('src/index.html')
 		.pipe(uncache({
-		    append: 'example'
+            append: 'hash',
+            rename: true,
+            srcDir: 'src',
+            distDir: 'dist'
 		}))
 		.pipe(gulp.dest('dist'));
 });
@@ -51,10 +106,9 @@ gulp.task('default', function () {
     <!--enduncache-->
 </head>
 <body>
-
-<!--uncache-->
-<script src="app.js"></script>
-<!--enduncache-->
+    <!--uncache-->
+    <script src="js/file.js"></script>
+    <!--enduncache-->
 </body>
 </html>
 ```
@@ -65,15 +119,10 @@ gulp.task('default', function () {
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    
-    <link rel="stylesheet" href="style.css?example"/>
-    
+    <link rel="stylesheet" href="style_46fa2c8d60.css"/>
 </head>
 <body>
-
-
-<script src="app.js?1401390721617"></script>
-
+    <script src="js/file_69749ca1f6.js"></script>
 </body>
 </html>
 ```
@@ -109,28 +158,16 @@ gulp.task('default', function () {
 ```
 
 
-##Options
-###append
-
-
-
-Type `String`
-
-
-default: `time`
-> String to append or one from:
-
-
-> `time` - return actual time stamp
-
 ## To do
-* support more flexible syntax 
-* option: rename file, instead appending url query
-* append string based on file content (and change filename only when it's content has been changed)
 * 'uncache' for all sources in files without `<!--uncache-->` tags
 * support css images (e.g. for often changing css sprites image)
 
 ## Changelog
+
+#####0.2.0
+- option rename 
+- option append hash
+- allow both `'` and `"` in tags
 
 #####0.1.3
 - added append option
