@@ -1,0 +1,120 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'F:\\Program Files (x86)\\nodejs\\\\node.exe',
+1 verbose cli   'F:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish',
+1 verbose cli   './' ]
+2 info using npm@1.4.9
+3 info using node@v0.10.28
+4 verbose node symlink F:\Program Files (x86)\nodejs\\node.exe
+5 verbose publish [ './' ]
+6 verbose cache add [ './', null ]
+7 verbose cache add name=undefined spec="./" args=["./",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: './',
+8 verbose parsed url   path: './',
+8 verbose parsed url   href: './' }
+9 silly lockFile 0ee6c175- ./
+10 verbose lock ./ F:\Users\SSD\AppData\Roaming\npm-cache\0ee6c175-.lock
+11 verbose tar pack [ 'F:\\Users\\SSD\\AppData\\Local\\Temp\\npm-6896-px8L4Q32\\1401461893665-0.6763463073875755\\tmp.tgz',
+11 verbose tar pack   './' ]
+12 verbose tarball F:\Users\SSD\AppData\Local\Temp\npm-6896-px8L4Q32\1401461893665-0.6763463073875755\tmp.tgz
+13 verbose folder ./
+14 info prepublish gulp-uncache@0.1.2
+15 silly lockFile 04cb2bca-tar tar://./
+16 verbose lock tar://./ F:\Users\SSD\AppData\Roaming\npm-cache\04cb2bca-tar.lock
+17 silly lockFile 2769e1c4-93665-0-6763463073875755-tmp-tgz tar://F:\Users\SSD\AppData\Local\Temp\npm-6896-px8L4Q32\1401461893665-0.6763463073875755\tmp.tgz
+18 verbose lock tar://F:\Users\SSD\AppData\Local\Temp\npm-6896-px8L4Q32\1401461893665-0.6763463073875755\tmp.tgz F:\Users\SSD\AppData\Roaming\npm-cache\2769e1c4-93665-0-6763463073875755-tmp-tgz.lock
+19 silly lockFile 04cb2bca-tar tar://./
+20 silly lockFile 04cb2bca-tar tar://./
+21 silly lockFile 2769e1c4-93665-0-6763463073875755-tmp-tgz tar://F:\Users\SSD\AppData\Local\Temp\npm-6896-px8L4Q32\1401461893665-0.6763463073875755\tmp.tgz
+22 silly lockFile 2769e1c4-93665-0-6763463073875755-tmp-tgz tar://F:\Users\SSD\AppData\Local\Temp\npm-6896-px8L4Q32\1401461893665-0.6763463073875755\tmp.tgz
+23 verbose tar unpack F:\Users\SSD\AppData\Local\Temp\npm-6896-px8L4Q32\1401461893665-0.6763463073875755\tmp.tgz
+24 silly lockFile dcc77042-cache-gulp-uncache-0-1-2-package tar://F:\Users\SSD\AppData\Roaming\npm-cache\gulp-uncache\0.1.2\package
+25 verbose lock tar://F:\Users\SSD\AppData\Roaming\npm-cache\gulp-uncache\0.1.2\package F:\Users\SSD\AppData\Roaming\npm-cache\dcc77042-cache-gulp-uncache-0-1-2-package.lock
+26 silly lockFile 2769e1c4-93665-0-6763463073875755-tmp-tgz tar://F:\Users\SSD\AppData\Local\Temp\npm-6896-px8L4Q32\1401461893665-0.6763463073875755\tmp.tgz
+27 verbose lock tar://F:\Users\SSD\AppData\Local\Temp\npm-6896-px8L4Q32\1401461893665-0.6763463073875755\tmp.tgz F:\Users\SSD\AppData\Roaming\npm-cache\2769e1c4-93665-0-6763463073875755-tmp-tgz.lock
+28 silly gunzTarPerm modes [ '755', '644' ]
+29 silly gunzTarPerm extractEntry package.json
+30 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+31 silly gunzTarPerm extractEntry index.js
+32 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+33 silly gunzTarPerm extractEntry readme.md
+34 silly gunzTarPerm modified mode [ 'readme.md', 438, 420 ]
+35 silly lockFile dcc77042-cache-gulp-uncache-0-1-2-package tar://F:\Users\SSD\AppData\Roaming\npm-cache\gulp-uncache\0.1.2\package
+36 silly lockFile dcc77042-cache-gulp-uncache-0-1-2-package tar://F:\Users\SSD\AppData\Roaming\npm-cache\gulp-uncache\0.1.2\package
+37 silly lockFile 2769e1c4-93665-0-6763463073875755-tmp-tgz tar://F:\Users\SSD\AppData\Local\Temp\npm-6896-px8L4Q32\1401461893665-0.6763463073875755\tmp.tgz
+38 silly lockFile 2769e1c4-93665-0-6763463073875755-tmp-tgz tar://F:\Users\SSD\AppData\Local\Temp\npm-6896-px8L4Q32\1401461893665-0.6763463073875755\tmp.tgz
+39 silly lockFile 0ee6c175- ./
+40 silly lockFile 0ee6c175- ./
+41 silly publish { name: 'gulp-uncache',
+41 silly publish   version: '0.1.2',
+41 silly publish   description: 'Append unique string to paths in html files to force refresh user\'s cache',
+41 silly publish   license: 'MIT',
+41 silly publish   repository: { type: 'git', url: 'git://github.com/elmccd/gulp-uncache' },
+41 silly publish   author:
+41 silly publish    { name: 'Maciej Dudziński',
+41 silly publish      email: 'elmccd@gmail.com',
+41 silly publish      url: 'https://github.com/elmccd' },
+41 silly publish   engines: { node: '>=0.10.0' },
+41 silly publish   scripts: { test: 'mocha' },
+41 silly publish   files: [ 'index.js' ],
+41 silly publish   keywords: [ 'gulpplugin', 'gulp', 'plugin', 'cache', 'rev', 'uncache' ],
+41 silly publish   dependencies: { 'gulp-util': '~2.2.14', through2: '~0.4.1' },
+41 silly publish   devDependencies: { mocha: '*' },
+41 silly publish   readme: '# gulp-uncache\n\n> Append unique string to paths in html files to force refresh user\'s cache\n\nAt actual state supported are only tags with `src=""` and `href=""` attributes with strict quotes `"` and limiters `<!--uncache-->` `<!--enduncache-->`\n\n## Install\n\n```bash\n$ npm install --save-dev gulp-uncache\n```\n##Effect\n```html\nBefore:\n<!--uncache-->\n<script src="app.js"></script>\n<link rel="stylesheet" href="style.css"/>\n<!--enduncache-->\n\nAfter:\n<script src="app.js?1401461036930"></script>\n<link rel="stylesheet" href="style.css?1401461036930"/>\n```\n## Examples\n\n### Basic\n#####gulpfile.js\n```javascript\nvar gulp = require(\'gulp\');\nvar uncache = require(\'gulp-uncache\');\n\ngulp.task(\'default\', function () {\n\treturn gulp.src(\'src/index.html\')\n\t\t.pipe(uncache())\n\t\t.pipe(gulp.dest(\'dist\'));\n});\n```\n#####src/index.html\n```html\n<!DOCTYPE html>\n<html>\n<head lang="en">\n    <meta charset="UTF-8">\n    <title></title>\n    <!--uncache-->\n    <link rel="stylesheet" href="style.css"/>\n    <!--enduncache-->\n</head>\n<body>\n\n<!--uncache-->\n<script src="app.js"></script>\n<!--enduncache-->\n</body>\n</html>\n```\n#####dist/index.html\n```html\n<!DOCTYPE html>\n<html>\n<head lang="en">\n    <meta charset="UTF-8">\n    <title></title>\n    \n    <link rel="stylesheet" href="style.css?1401390721617"/>\n    \n</head>\n<body>\n\n\n<script src="app.js?1401390721617"></script>\n\n</body>\n</html>\n```\n### With other plugins\n#####gulpfile.js\n```javascript\nvar gulp = require(\'gulp\');\nvar usemin = require(\'gulp-usemin\');\nvar uncache = require(\'gulp-uncache\');\n\ngulp.task(\'default\', function () {\n    return gulp.src(\'src/index.html\')\n        .pipe(usemin({\n            js: []\n        }))\n        .pipe(uncache())\n        .pipe(gulp.dest(\'dist\'));\n});\n```\n#####src/index.html\n```html\n<!--uncache-->\n<!-- build:js lib.js -->\n<script src="js/file1.js"></script>\n<script src="js/file2.js"></script>\n<script src="js/file3.js"></script>\n<!-- endbuild -->\n<!--enduncache-->\n```\n#####dist/index.html\n```html\n<script src="lib.js?1401393153336"></script>\n```\n## API\n\n### uncache()\n\n\n## To do\n* tests\n* support more flexible syntax \n* option: rename file, instead appending url query\n* append string based on file content (and change filename only when it\'s content has been changed)\n* \'uncache\' for all sources in files without `<!--uncache-->` tags\n* support css images (e.g. for often changing css sprites image)\n\n## Changelog\n\n#####0.1.2\n- fixed multi line blocks\n- fixed parsing lines with attributes\n- skipping incorrect tags\n- log info and errors\n\n#####0.1.1\n- initial release\n\n## License\n\nMIT © [Maciej Dudziński](https://github.com/elmccd)\n',
+41 silly publish   readmeFilename: 'readme.md',
+41 silly publish   bugs: { url: 'https://github.com/elmccd/gulp-uncache/issues' },
+41 silly publish   homepage: 'https://github.com/elmccd/gulp-uncache',
+41 silly publish   _id: 'gulp-uncache@0.1.2',
+41 silly publish   _shasum: '7b204d1e4f954b475076da78d0d26b709ba9394d',
+41 silly publish   _from: './' }
+42 verbose url raw gulp-uncache
+43 verbose url resolving [ 'https://registry.npmjs.org/', './gulp-uncache' ]
+44 verbose url resolved https://registry.npmjs.org/gulp-uncache
+45 info trying registry request attempt 1 at 16:58:13
+46 http PUT https://registry.npmjs.org/gulp-uncache
+47 http 403 https://registry.npmjs.org/gulp-uncache
+48 verbose headers { date: 'Fri, 30 May 2014 14:58:52 GMT',
+48 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+48 verbose headers   'content-type': 'application/json',
+48 verbose headers   'cache-control': 'max-age=1',
+48 verbose headers   'content-length': '6063',
+48 verbose headers   'accept-ranges': 'bytes',
+48 verbose headers   via: '1.1 varnish',
+48 verbose headers   'x-served-by': 'cache-fra1223-FRA',
+48 verbose headers   'x-cache': 'MISS',
+48 verbose headers   'x-cache-hits': '0',
+48 verbose headers   'x-timer': 'S1401461932.173825,VS0,VE670',
+48 verbose headers   'keep-alive': 'timeout=10, max=50',
+48 verbose headers   connection: 'Keep-Alive' }
+49 error publish Failed PUT 403
+50 error Error: forbidden cannot modify pre-existing version: 0.1.2
+50 error old={"name":"gulp-uncache","version":"0.1.2","description":"> Append unique string to paths in html files to force refresh user's cache","license":"MIT","repository":{"type":"git","url":"git://github.com/elmccd/gulp-uncache"},"author":{"name":"Maciej Dudziński","email":"elmccd@gmail.com","url":"https://github.com/elmccd"},"engines":{"node":">=0.10.0"},"scripts":{"test":"mocha"},"files":["index.js"],"keywords":["gulpplugin","gulp","plugin","cache","rev","uncache"],"dependencies":{"gulp-util":"~2.2.14","through2":"~0.4.1"},"devDependencies":{"mocha":"*"},"bugs":{"url":"https://github.com/elmccd/gulp-uncache/issues"},"homepage":"https://github.com/elmccd/gulp-uncache","_id":"gulp-uncache@0.1.2","_shasum":"334aeeb0d84f33f7f470246cda1abc1253db2362","_from":"./","_npmVersion":"1.4.9","_npmUser":{"name":"elmccd","email":"elmccd@gmail.com"},"maintainers":[{"name":"elmccd","email":"elmccd@gmail.com"}],"dist":{"shasum":"334aeeb0d84f33f7f470246cda1abc1253db2362","tarball":"http://registry.npmjs.org/gulp-uncache/-/gulp-uncache-0.1.2.tgz"}}
+50 error new={"name":"gulp-uncache","version":"0.1.2","description":"Append unique string to paths in html files to force refresh user's cache","license":"MIT","repository":{"type":"git","url":"git://github.com/elmccd/gulp-uncache"},"author":{"name":"Maciej Dudziński","email":"elmccd@gmail.com","url":"https://github.com/elmccd"},"engines":{"node":">=0.10.0"},"scripts":{"test":"mocha"},"files":["index.js"],"keywords":["gulpplugin","gulp","plugin","cache","rev","uncache"],"dependencies":{"gulp-util":"~2.2.14","through2":"~0.4.1"},"devDependencies":{"mocha":"*"},"readme":"# gulp-uncache\u000a\u000a> Append unique string to paths in html files to force refresh user's cache\u000a\u000aAt actual state supported are only tags with `src=\"\"` and `href=\"\"` attributes with strict quotes `\"` and limiters `<!--uncache-->` `<!--enduncache-->`\u000a\u000a## Install\u000a\u000a```bash\u000a$ npm install --save-dev gulp-uncache\u000a```\u000a##Effect\u000a```html\u000aBefore:\u000a<!--uncache-->\u000a<script src=\"app.js\"></script>\u000a<link rel=\"stylesheet\" href=\"style.css\"/>\u000a<!--enduncache-->\u000a\u000aAfter:\u000a<script src=\"app.js?1401461036930\"></script>\u000a<link rel=\"stylesheet\" href=\"style.css?1401461036930\"/>\u000a```\u000a## Examples\u000a\u000a### Basic\u000a#####gulpfile.js\u000a```javascript\u000avar gulp = require('gulp');\u000avar uncache = require('gulp-uncache');\u000a\u000agulp.task('default', function () {\u000a\u0009return gulp.src('src/index.html')\u000a\u0009\u0009.pipe(uncache())\u000a\u0009\u0009.pipe(gulp.dest('dist'));\u000a});\u000a```\u000a#####src/index.html\u000a```html\u000a<!DOCTYPE html>\u000a<html>\u000a<head lang=\"en\">\u000a    <meta charset=\"UTF-8\">\u000a    <title></title>\u000a    <!--uncache-->\u000a    <link rel=\"stylesheet\" href=\"style.css\"/>\u000a    <!--enduncache-->\u000a</head>\u000a<body>\u000a\u000a<!--uncache-->\u000a<script src=\"app.js\"></script>\u000a<!--enduncache-->\u000a</body>\u000a</html>\u000a```\u000a#####dist/index.html\u000a```html\u000a<!DOCTYPE html>\u000a<html>\u000a<head lang=\"en\">\u000a    <meta charset=\"UTF-8\">\u000a    <title></title>\u000a    \u000a    <link rel=\"stylesheet\" href=\"style.css?1401390721617\"/>\u000a    \u000a</head>\u000a<body>\u000a\u000a\u000a<script src=\"app.js?1401390721617\"></script>\u000a\u000a</body>\u000a</html>\u000a```\u000a### With other plugins\u000a#####gulpfile.js\u000a```javascript\u000avar gulp = require('gulp');\u000avar usemin = require('gulp-usemin');\u000avar uncache = require('gulp-uncache');\u000a\u000agulp.task('default', function () {\u000a    return gulp.src('src/index.html')\u000a        .pipe(usemin({\u000a            js: []\u000a        }))\u000a        .pipe(uncache())\u000a        .pipe(gulp.dest('dist'));\u000a});\u000a```\u000a#####src/index.html\u000a```html\u000a<!--uncache-->\u000a<!-- build:js lib.js -->\u000a<script src=\"js/file1.js\"></script>\u000a<script src=\"js/file2.js\"></script>\u000a<script src=\"js/file3.js\"></script>\u000a<!-- endbuild -->\u000a<!--enduncache-->\u000a```\u000a#####dist/index.html\u000a```html\u000a<script src=\"lib.js?1401393153336\"></script>\u000a```\u000a## API\u000a\u000a### uncache()\u000a\u000a\u000a## To do\u000a* tests\u000a* support more flexible syntax \u000a* option: rename file, instead appending url query\u000a* append string based on file content (and change filename only when it's content has been changed)\u000a* 'uncache' for all sources in files without `<!--uncache-->` tags\u000a* support css images (e.g. for often changing css sprites image)\u000a\u000a## Changelog\u000a\u000a#####0.1.2\u000a- fixed multi line blocks\u000a- fixed parsing lines with attributes\u000a- skipping incorrect tags\u000a- log info and errors\u000a\u000a#####0.1.1\u000a- initial release\u000a\u000a## License\u000a\u000aMIT © [Maciej Dudziński](https://github.com/elmccd)\u000a","readmeFilename":"readme.md","bugs":{"url":"https://github.com/elmccd/gulp-uncache/issues"},"homepage":"https://github.com/elmccd/gulp-uncache","_id":"gulp-uncache@0.1.2","_shasum":"7b204d1e4f954b475076da78d0d26b709ba9394d","_from":"./","_npmVersion":"1.4.9","_npmUser":{"name":"elmccd","email":"elmccd@gmail.com"},"maintainers":[{"name":"elmccd","email":"elmccd@gmail.com"}],"dist":{"shasum":"7b204d1e4f954b475076da78d0d26b709ba9394d","tarball":"http://registry.npmjs.org/gulp-uncache/-/gulp-uncache-0.1.2.tgz"}}: gulp-uncache
+50 error     at RegClient.<anonymous> (F:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:273:14)
+50 error     at Request._callback (F:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:211:65)
+50 error     at Request.self.callback (F:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:123:22)
+50 error     at Request.EventEmitter.emit (events.js:98:17)
+50 error     at Request.<anonymous> (F:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:893:14)
+50 error     at Request.EventEmitter.emit (events.js:117:20)
+50 error     at IncomingMessage.<anonymous> (F:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:844:12)
+50 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
+50 error     at _stream_readable.js:919:16
+50 error     at process._tickCallback (node.js:419:13)
+51 error If you need help, you may report this *entire* log,
+51 error including the npm and node versions, at:
+51 error     <http://github.com/npm/npm/issues>
+52 error System Windows_NT 6.1.7601
+53 error command "F:\\Program Files (x86)\\nodejs\\\\node.exe" "F:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish" "./"
+54 error cwd F:\wamp\www\gulp-uncache
+55 error node -v v0.10.28
+56 error npm -v 1.4.9
+57 verbose exit [ 1, true ]

@@ -7,6 +7,8 @@ gulp.task('default', function () {
         .pipe(usemin({
             js: []
         }))
-        .pipe(uncache())
+        .pipe(uncache({
+            append: 'bazinga'
+        }))
         .pipe(gulp.dest('dist'));
 });

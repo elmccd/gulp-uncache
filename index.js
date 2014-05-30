@@ -6,27 +6,32 @@
  * Licensed under the MIT license.
  */
 'use strict';
-var through = require('through2');
-var gutil = require('gulp-util');
-var PluginError = gutil.PluginError;
-
-var PLUGIN_NAME = 'gulp-uncache';
-
-//prevent multiple notification
-var alreadyBeeped = false;
-var changed = 0;
+var PLUGIN_NAME = 'gulp-uncache',
+    through = require('through2'),
+    gutil = require('gulp-util'),
+    PluginError = gutil.PluginError,
+    alreadyBeeped,
+    changed,
+    config = {
+        append: 'time'
+    };
 
 function replaceFileName(line, append) {
     var parts,
         parts2,
         output = [],
         type;
-    if(line.indexOf('src=') > 0) {
+
+    if (line.indexOf('src=') > 0) {
         type = 'src';
-    } else if(line.indexOf('href=') > 0) {
+    } else if (line.indexOf('href=') > 0) {
         type = 'href';
     } else {
         return line;
+    }
+
+    if (append === 'time') {
+        append = new Date().getTime();
     }
 
 
@@ -37,9 +42,9 @@ function replaceFileName(line, append) {
         output.push(parts2[0], '?', append, '"', parts2.slice(1).join('"'));
         changed++;
         return output.join('');
-    } catch(err) {
+    } catch (err) {
         gutil.log(gutil.colors.red("Couldn't parse line: (skipped)"), line);
-        if(!alreadyBeeped) {
+        if (!alreadyBeeped) {
             alreadyBeeped = true;
             gutil.beep();
         }
@@ -51,16 +56,18 @@ function replaceFileName(line, append) {
 
 function proceed(content) {
 
-    var parts = content.split('<!--uncache-->');
-    var output = [];
+    var parts = content.split('<!--uncache-->'),
+        output = [];
+
     output.push(parts[0]);
     parts.shift();
+
     //foreach block
-    parts.forEach(function(element) {
+    parts.forEach(function (element) {
         var parts2 = element.split('<!--enduncache-->');
         var lines = parts2[0].split('\n');
-        lines.forEach(function(element) {
-            output.push(replaceFileName(element, new Date().getTime()));
+        lines.forEach(function (element) {
+            output.push(replaceFileName(element, config.append));
             output.push('\n');
         });
         output.push(parts2[1]);
@@ -69,15 +76,21 @@ function proceed(content) {
 }
 
 
-
 // Plugin level function(dealing with files)
-function unCache() {
-//    if (!params) {
-//        throw new PluginError(PLUGIN_NAME, "Missing prefix text!");
-//    }
+function unCache(params) {
+
+    alreadyBeeped = false;
+    changed = 0;
+
+    //extend config
+    for (var param in params) {
+        if (params.hasOwnProperty(param)) {
+            config[param] = params[param];
+        }
+    }
 
     // Creating a stream through which each file will pass
-    var stream = through.obj(function(file, enc, callback) {
+    var stream = through.obj(function (file, enc, callback) {
         if (file.isNull()) {
             // Do nothing if no contents
         }

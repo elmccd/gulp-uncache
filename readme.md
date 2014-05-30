@@ -103,13 +103,23 @@ gulp.task('default', function () {
 ```html
 <script src="lib.js?1401393153336"></script>
 ```
-## API
 
-### uncache()
 
+##Options
+###append
+
+
+
+Type `String`
+
+
+default: `time`
+> String to append or one from:
+
+
+> `time` - return actual time stamp
 
 ## To do
-* tests
 * support more flexible syntax 
 * option: rename file, instead appending url query
 * append string based on file content (and change filename only when it's content has been changed)
@@ -130,3 +140,4 @@ gulp.task('default', function () {
 ## License
 
 MIT © [Maciej Dudziński](https://github.com/elmccd)
+
