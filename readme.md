@@ -1,6 +1,6 @@
 # gulp-uncache
 
-> Append unique string to paths in html files to force refresh resources by clients
+> Append unique string to paths in html files to force refresh user's cache
 
 At actual state supported are only tags with `src=""` and `href=""` attributes with strict quotes `"`
 
@@ -94,6 +94,7 @@ Will result in:
 
 ### uncache()
 
+
 ## To do
 * tests
 * support more flexible syntax 
@@ -102,6 +103,15 @@ Will result in:
 * 'uncache' for all sources in files without `<!--uncache-->` tags
 * support css images (e.g. for often changing css sprites image)
 
+## Changelog
+
+#####0.1.2
+- fixed multi line blocks
+- fixed parsing lines with attributes
+- skipping incorrect tags
+
+#####0.1.1
+- initial release
 
 ## License
 
