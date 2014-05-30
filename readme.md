@@ -1,4 +1,5 @@
-# gulp-uncache  [![NPM version][npm-image]][npm-url] 
+# gulp-uncache
+![NPM version](https://badge.fury.io/js/gulp-iconfont.png)
 
 > Append unique string to paths in html files to force refresh user's cache
 
