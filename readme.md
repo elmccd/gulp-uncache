@@ -21,9 +21,10 @@ After:
 <script src="app.js?1401461036930"></script>
 <link rel="stylesheet" href="style.css?1401461036930"/>
 ```
-## Example
+## Examples
 
 ### Basic
+#####gulpfile.js
 ```javascript
 var gulp = require('gulp');
 var uncache = require('gulp-uncache');
@@ -34,7 +35,7 @@ gulp.task('default', function () {
 		.pipe(gulp.dest('dist'));
 });
 ```
-+
+#####src/index.html
 ```html
 <!DOCTYPE html>
 <html>
@@ -53,7 +54,7 @@ gulp.task('default', function () {
 </body>
 </html>
 ```
-Will result in:
+#####dist/index.html
 ```html
 <!DOCTYPE html>
 <html>
@@ -73,6 +74,7 @@ Will result in:
 </html>
 ```
 ### With other plugins
+#####gulpfile.js
 ```javascript
 var gulp = require('gulp');
 var usemin = require('gulp-usemin');
@@ -87,7 +89,7 @@ gulp.task('default', function () {
         .pipe(gulp.dest('dist'));
 });
 ```
-+
+#####src/index.html
 ```html
 <!--uncache-->
 <!-- build:js lib.js -->
@@ -97,7 +99,7 @@ gulp.task('default', function () {
 <!-- endbuild -->
 <!--enduncache-->
 ```
-Will result in:
+#####dist/index.html
 ```html
 <script src="lib.js?1401393153336"></script>
 ```
@@ -120,6 +122,7 @@ Will result in:
 - fixed multi line blocks
 - fixed parsing lines with attributes
 - skipping incorrect tags
+- log info and errors
 
 #####0.1.1
 - initial release
