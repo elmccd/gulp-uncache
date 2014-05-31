@@ -23,7 +23,7 @@ Before:
 <!-- enduncache -->
 
 After:
-<script src="index.js?1401482624657"></script>
+<script src="app.js?1401482624657"></script>
 
 <link rel="stylesheet" href="style_46fa2c8d60.css"/>
 ```
