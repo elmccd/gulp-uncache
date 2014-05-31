@@ -11,9 +11,5 @@ gulp.task('default', function () {
             rename: true,
             srcDir: 'src',
             distDir: 'dist'
-        })).pipe(uncache({
-            append: 'hash',
-            srcDir: 'src'
-        }))
-        .pipe(gulp.dest('dist'));
+        })).pipe(gulp.dest('dist'));
 });

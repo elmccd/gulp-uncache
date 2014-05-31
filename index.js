@@ -23,14 +23,12 @@ var PLUGIN_NAME = 'gulp-uncache',
     };
 
 function swapValue(line, filename, append) {
-    console.log(config);
     if(config.rename) {
         var filebase = filename.split('/').reverse()[0].split('.')[0];
         var extension = filename.split('/').reverse()[0].split('.').slice(1).join('.');
         var dir = filename.split('/').slice(0, -1).join('/');
 
         var newFileName = (dir ? dir + '/' : '') + filebase + '_' + append + '.' + extension;
-        console.log(newFileName);
         mkdirRecursive(path.dirname((path.normalize(path.join(config.distDir, filename)))));
         fs.createReadStream(path.join(config.srcDir, filename)).pipe(fs.createWriteStream(path.join(config.distDir, newFileName)));
         return line.replace(filename, newFileName);
@@ -47,18 +45,18 @@ function replaceFileName(line, append) {
         filePath;
 
     if (line.indexOf('src=') > 0) {
-        regexp = /<.*\s+src=['"](.+)['"].*>/;
+        regexp = /<.*\s+src=['"]([^'"]+)['"].*>/;
     } else if (line.indexOf('href=') > 0) {
-        regexp = /<.*\s+href=['"](.+)['"].*>/;
+        regexp = /<.*\s+href=['"]([^'"]+)['"].*>/;
     } else {
         return line;
     }
 
     try {
         parts = line.split(regexp);
+        console.log(parts);
         filename = parts[1];
         changed++;
-        console.log(append);
         if (append === 'hash') {
             filePath = path.join(config.srcDir, filename);
             var fileExist = fs.existsSync(filePath);
@@ -96,7 +94,7 @@ function proceed(content) {
 
     var parts = content.split(/<!--\s*uncache\s*-->/),
         output = [];
-
+    var newLine;
     output.push(parts[0]);
     parts.shift();
 
@@ -105,8 +103,11 @@ function proceed(content) {
         var parts2 = element.split(/<!--\s*enduncache\s*-->/);
         var lines = parts2[0].split('\n');
         lines.forEach(function (element) {
-            output.push(replaceFileName(element, config.append));
-            output.push('\n');
+            newLine = replaceFileName(element, config.append);
+            output.push(newLine);
+            if(newLine !== '') {
+                output.push('\n');
+            }
         });
         output.push(parts2[1]);
     });

@@ -40,15 +40,19 @@ var snippets = [
     },
     {
         name: 'multiple script tag',
-        src: '<!--uncache-->' +
+        src: '<!-- uncache -->' +
             '<script src="app.js"></script>' +
             '\n' +
             '<script src="app2.js"></script>' +
+            '\n' +
+            '<script src="app3.js"></script>' +
             '<!--enduncache-->',
         dist: '' +
             '<script src="app.js?123"></script>' +
             '\n' +
             '<script src="app2.js?123"></script>' +
+            '\n' +
+            '<script src="app3.js?123"></script>' +
             '',
         config: {
             append: '123'
