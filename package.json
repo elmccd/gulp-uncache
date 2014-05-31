@@ -1,6 +1,6 @@
 {
   "name": "gulp-uncache",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Append unique string to paths in html files to force refresh user's cache",
   "license": "MIT",
   "repository": "elmccd/gulp-uncache",
