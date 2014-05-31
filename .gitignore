@@ -2,4 +2,6 @@
 node_modules/
 src/
 dist/
+js/
 gulpfile.js
+./gulpfile.js
