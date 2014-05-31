@@ -14,17 +14,17 @@ $ npm install --save-dev gulp-uncache
 ##Effect
 ```html
 Before:
-<!--uncache-->
+<!-- uncache -->
 <script src="app.js"></script>
+<!-- enduncache -->
+
+<!-- uncache(rename:true, append:hash, srcDir:src, distDir:dist) -->
 <link rel="stylesheet" href="style.css"/>
-<!--enduncache-->
+<!-- enduncache -->
 
 After:
 <script src="index.js?1401482624657"></script>
-<link rel="stylesheet" href="style.css?1401482624658"/>
 
-After: (rename: true, append: 'hash')
-<script src="index_28995472d0.js"></script>
 <link rel="stylesheet" href="style_46fa2c8d60.css"/>
 ```
 
@@ -62,7 +62,7 @@ Type `String`
 
 
 default: `./`
-> Path to dir with source files
+> Path to dir with source files. (Used only when `rename:true`, or `append:'hash'`)
 
 
 ###distDir
@@ -72,8 +72,13 @@ Type `String`
 
 
 default: `./`
-> Path to dir where renamed files will be saved
+> Path to dir where renamed files will be saved. (Used only when `rename:true`)
 
+##Inline options
+You can set options inline that way: (omit quotes sign)
+```html
+<!-- uncache(param:value, param:value) -->
+```
 
 ## Examples
 
@@ -106,7 +111,7 @@ gulp.task('default', function () {
     <!--enduncache-->
 </head>
 <body>
-    <!--uncache-->
+    <!--uncache(rename:false)-->
     <script src="js/file.js"></script>
     <!--enduncache-->
 </body>
@@ -122,7 +127,7 @@ gulp.task('default', function () {
     <link rel="stylesheet" href="style_46fa2c8d60.css"/>
 </head>
 <body>
-    <script src="js/file_69749ca1f6.js"></script>
+    <script src="js/file.js?46fa2c8d60"></script>
 </body>
 </html>
 ```
@@ -163,6 +168,10 @@ gulp.task('default', function () {
 * support css images (e.g. for often changing css sprites image)
 
 ## Changelog
+
+#####0.2.2
+- inline options
+- fixed parsing regexp
 
 #####0.2.0
 - option rename 

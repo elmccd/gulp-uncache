@@ -13,6 +13,15 @@ var snippets = [
         config: {
             append: '123'
         }
+    },    {
+        name: 'script tag with inline options',
+        src: '<!-- uncache(append:4) -->' +
+            '<link rel="stylesheet" href="style.css"/>' +
+            '<!--enduncache-->',
+        dist: '<link rel="stylesheet" href="style.css?4"/>',
+        config: {
+            append: '123'
+        }
     },
     {
         name: 'css link tag',
