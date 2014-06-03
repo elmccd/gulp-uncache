@@ -1,8 +1,7 @@
 .idea/
 node_modules/
 examples/node_modules/
-src/
-dist/
-js/
-gulpfile.js
+./src/
+./dist/
+./js/
 ./gulpfile.js
