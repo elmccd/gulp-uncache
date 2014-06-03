@@ -8,7 +8,7 @@ gulp.task('default', function () {
             js: []
         }))
         .pipe(uncache({
-            template: '{{filepath}}{{append}}.{{extension}}'
+            template: '{{path}}{{name}}{{append}}.{{extension}}'
         }))
         .pipe(gulp.dest('dist'));
 });

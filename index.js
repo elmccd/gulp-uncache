@@ -23,7 +23,7 @@ var PLUGIN_NAME = 'gulp-uncache',
         distDir: './',
         srcDir: './',
         rename: false,
-        template:'{{filepath}}{{filename}}_{{append}}.{{extension}}'
+        template:'{{path}}{{name}}_{{append}}.{{extension}}'
     },
     config = {};
 
@@ -31,10 +31,10 @@ function swapValue(line, filename, append) {
 
     if (config.rename) {
         var opt = {};
-        opt.filename = filename.split('/').reverse()[0].split('.')[0];
+        opt.name = filename.split('/').reverse()[0].split('.')[0];
         opt.extension = filename.split('/').reverse()[0].split('.').slice(1).join('.');
-        opt.filepath = filename.split('/').slice(0, -1).join('/');
-        opt.filepath = (opt.filepath ? opt.filepath + '/' : '');
+        opt.path = filename.split('/').slice(0, -1).join('/');
+        opt.path = (opt.path ? opt.path + '/' : '');
         opt.append = append;
 
         var template = hogan.compile(config.template);

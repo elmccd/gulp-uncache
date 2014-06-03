@@ -1,5 +1,5 @@
 # gulp-uncache
-[![NPM version](https://d25lcipzij17d.cloudfront.net/badge.png?id=js&type=3d&v=0.2.0)](https://www.npmjs.org/package/gulp-uncache)
+[![NPM version](https://d25lcipzij17d.cloudfront.net/badge.png?id=js&type=3d&v=0.2.3)](https://www.npmjs.org/package/gulp-uncache)
 
 
 > Append unique string to paths in html files to force refresh user's cache.
@@ -74,6 +74,14 @@ Type `String`
 default: `./`
 > Path to dir where renamed files will be saved. (Used only when `rename:true`)
 
+###template
+
+Type `String`
+
+default `{{path}}{{name}}_{{append}}.{{extension}}`
+
+> Template for replace ([Hogan.js](https://github.com/twitter/hogan.js)). Available variables: `path`, `name`, `append`, `extension`
+
 ##Inline options
 You can set options inline that way: (omit quotes sign)
 ```html
@@ -89,7 +97,7 @@ var gulp = require('gulp');
 var uncache = require('gulp-uncache');
 
 gulp.task('default', function () {
-	return gulp.src('src/index.html')
+    return gulp.src('src/index.html')
 		.pipe(uncache({
             append: 'hash',
             rename: true,
@@ -168,6 +176,9 @@ gulp.task('default', function () {
 * support css images (e.g. for often changing css sprites image)
 
 ## Changelog
+
+#####0.2.3
+- option template
 
 #####0.2.2
 - inline options
