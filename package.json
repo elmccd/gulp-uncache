@@ -29,6 +29,7 @@
   "dependencies": {
     "blueimp-md5": "^1.1.0",
     "gulp-util": "~2.2.14",
+    "hogan.js": "^2.0.0",
     "through2": "~0.4.1"
   },
   "devDependencies": {

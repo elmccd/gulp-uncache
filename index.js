@@ -10,6 +10,7 @@ var PLUGIN_NAME = 'gulp-uncache',
     through = require('through2'),
     gutil = require('gulp-util'),
     util = require('util'),
+    hogan = require('hogan.js'),
     md5 = require('blueimp-md5').md5,
     fs = require('fs'),
     path = require('path'),
@@ -21,22 +22,30 @@ var PLUGIN_NAME = 'gulp-uncache',
         append: 'time',
         distDir: './',
         srcDir: './',
-        rename: false
+        rename: false,
+        template:'{{filepath}}{{filename}}_{{append}}.{{extension}}'
     },
     config = {};
 
 function swapValue(line, filename, append) {
 
     if (config.rename) {
-        var filebase = filename.split('/').reverse()[0].split('.')[0];
-        var extension = filename.split('/').reverse()[0].split('.').slice(1).join('.');
-        var dir = filename.split('/').slice(0, -1).join('/');
+        var opt = {};
+        opt.filename = filename.split('/').reverse()[0].split('.')[0];
+        opt.extension = filename.split('/').reverse()[0].split('.').slice(1).join('.');
+        opt.filepath = filename.split('/').slice(0, -1).join('/');
+        opt.filepath = (opt.filepath ? opt.filepath + '/' : '');
+        opt.append = append;
 
-        var newFileName = (dir ? dir + '/' : '') + filebase + '_' + append + '.' + extension;
+        var template = hogan.compile(config.template);
+        var newFileName = template.render(opt);
+
+
         mkdirRecursive(path.dirname((path.normalize(path.join(config.distDir, filename)))));
         fs.createReadStream(path.join(config.srcDir, filename)).pipe(fs.createWriteStream(path.join(config.distDir, newFileName)));
-        return line.replace(filename, newFileName);
 
+
+        return line.replace(filename, newFileName);
     } else {
         return line.replace(filename, filename + '?' + append);
     }
@@ -44,8 +53,10 @@ function swapValue(line, filename, append) {
 
 function replaceFileName(line, append) {
     var parts,
+        file,
         filename,
         regexp,
+        fileExist,
         filePath;
 
     if (line.indexOf('src=') > 0) {
@@ -62,13 +73,13 @@ function replaceFileName(line, append) {
         changed++;
         if (append === 'hash') {
             filePath = path.join(config.srcDir, filename);
-            var fileExist = fs.existsSync(filePath);
+            fileExist = fs.existsSync(filePath);
             if (!fileExist) {
                 gutil.log(gutil.colors.red("Couldn't find file:"), filePath);
                 skipped++;
                 return line;
             }
-            var file = fs.readFileSync(filePath);
+            file = fs.readFileSync(filePath);
             if (file) {
                 return swapValue(line, filename, md5(file).substr(0, 10));
             } else {
@@ -85,15 +96,13 @@ function replaceFileName(line, append) {
     } catch (err) {
         gutil.log(gutil.colors.red("Couldn't parse line: (skipped)"), line);
         skipped++;
-        console.error(err);
+
         if (!alreadyBeeped) {
             alreadyBeeped = true;
             gutil.beep();
         }
         return line;
     }
-
-
 }
 
 function proceed(content, params) {
@@ -164,12 +173,16 @@ function proceed(content, params) {
 }
 
 function mkdirRecursive(dir) {
+    var dirs,
+        i,
+        _path;
+
     if (fs.existsSync(path.normalize(dir))) {
         return false;
     }
-    var dirs = path.normalize(dir).split(path.sep),
-        i,
-        _path;
+
+    dirs = path.normalize(dir).split(path.sep);
+
     for (i = 0; i < dirs.length; i += 1) {
         _path = path.normalize(dirs.slice(0, i + 1).join('/'));
         if (!fs.existsSync(_path)) {
