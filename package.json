@@ -1,7 +1,7 @@
 {
   "name": "gulp-uncache",
   "version": "0.2.3",
-  "description": "Append unique string to paths in html files to force refresh user's cache",
+  "description": "Append unique string to paths in html files to force refresh (remove) user's cache",
   "license": "MIT",
   "repository": "elmccd/gulp-uncache",
   "author": {
@@ -25,7 +25,10 @@
     "plugin",
     "cache",
     "rev",
-    "uncache"
+    "uncache",
+    "refresh",
+    "remove",
+    "update"
   ],
   "dependencies": {
     "blueimp-md5": "^1.1.0",
