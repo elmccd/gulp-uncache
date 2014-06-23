@@ -2,7 +2,7 @@
 [![NPM version](https://badge.fury.io/js/gulp-uncache.svg)](http://badge.fury.io/js/gulp-uncache)
 [![Build Status](https://travis-ci.org/elmccd/gulp-uncache.svg?branch=master)](https://travis-ci.org/elmccd/gulp-uncache)
 
-> Append unique string to paths in html files to force refresh user's cache.
+> Append unique string or md5 hash to paths in html files to force refresh - remove users cache app.js -> app_8j3d7a4f.js
 
 Supported tags with `src` or `href` attributes.
 
