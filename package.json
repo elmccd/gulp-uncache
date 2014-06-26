@@ -1,6 +1,6 @@
 {
   "name": "gulp-uncache",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Append unique string or md5 hash to paths in html files to force refresh - remove users cache app.js -> app_8j3d7a4f.js",
   "license": "MIT",
   "repository": "elmccd/gulp-uncache",
@@ -13,7 +13,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "cd test && mocha"
   },
   "files": [
     "index.js"
@@ -33,8 +33,8 @@
   "dependencies": {
     "blueimp-md5": "^1.1.0",
     "gulp-util": "~2.2.14",
-    "hogan.js": "^2.0.0",
-    "through2": "~0.4.1"
+    "hogan.js": "^3.0.0",
+    "through2": "~1.0.0"
   },
   "devDependencies": {
     "mocha": "*"

@@ -1,11 +1,13 @@
 'use strict';
-var assert = require('assert');
-var gutil = require('gulp-util');
-var uncache = require('./../index');
+var assert = require('assert'),
+    gutil = require('gulp-util'),
+    fs = require('fs'),
+    uncache = require('../index');
+
 
 var snippets = [
     {
-        name: 'script tag',
+        name: 'simple tag',
         src: '<!--uncache-->' +
             '<link rel="stylesheet" href="style.css"/>' +
             '<!--enduncache-->',
@@ -13,8 +15,48 @@ var snippets = [
         config: {
             append: '123'
         }
-    },    {
-        name: 'script tag with inline options',
+    },
+    {
+        name: 'hash',
+        src: '<!--uncache-->' +
+            '<link rel="stylesheet" href="style.css"/>' +
+            '<!--enduncache-->',
+        dist: '<link rel="stylesheet" href="style.css?bdcd878309"/>',
+        config: {
+            append: 'hash',
+            srcDir: 'src',
+            distDir: 'dist'
+        }
+    },
+    {
+        name: 'rename',
+        src: '<!--uncache-->' +
+            '<link rel="stylesheet" href="style.css"/>' +
+            '<!--enduncache-->',
+        dist: '<link rel="stylesheet" href="style_123.css"/>',
+        config: {
+            append: '123',
+            rename: true,
+            srcDir: 'src',
+            distDir: 'dist'
+        }
+    },
+    {
+        name: 'custom template',
+        src: '<!--uncache-->' +
+            '<link rel="stylesheet" href="style.css"/>' +
+            '<!--enduncache-->',
+        dist: '<link rel="stylesheet" href="style-123.css"/>',
+        config: {
+            append: '123',
+            rename: true,
+            srcDir: 'src',
+            distDir: 'dist',
+            template: '{{path}}{{name}}-{{append}}.{{extension}}'
+        }
+    },
+    {
+        name: 'css link tag with inline options',
         src: '<!-- uncache(append:4) -->' +
             '<link rel="stylesheet" href="style.css"/>' +
             '<!--enduncache-->',
@@ -24,7 +66,7 @@ var snippets = [
         }
     },
     {
-        name: 'css link tag',
+        name: 'script tag',
         src: '<!--uncache-->' +
             '<script src="app.js"></script>' +
             '<!--enduncache-->',
@@ -50,21 +92,45 @@ var snippets = [
     {
         name: 'multiple script tag',
         src: '<!-- uncache -->' +
-            '<script src="app.js"></script>' +
-            '\n' +
-            '<script src="app2.js"></script>' +
-            '\n' +
+            '<script src="app.js"></script>\n' +
+            '<script src="app2.js"></script>\n' +
             '<script src="app3.js"></script>' +
             '<!--enduncache-->',
         dist: '' +
-            '<script src="app.js?123"></script>' +
-            '\n' +
-            '<script src="app2.js?123"></script>' +
-            '\n' +
+            '<script src="app.js?123"></script>\n' +
+            '<script src="app2.js?123"></script>\n' +
             '<script src="app3.js?123"></script>' +
             '',
         config: {
             append: '123'
+        }
+    },
+    {
+        name: 'complex configuration',
+        src: ' <!-- uncache --> ' +
+            '<link rel="stylesheet" href="style.css"/>' +
+            ' <!-- enduncache --> ',
+        dist: '<link rel="stylesheet" href="style-bdcd878309.uncached.css"/>',
+        config: {
+            append: 'hash',
+            rename: true,
+            srcDir: 'src',
+            distDir: 'dist',
+            template: '{{path}}{{name}}-{{append}}.uncached.{{extension}}'
+        }
+    },
+    {
+        name: 'complex inline',
+        src: ' <!-- uncache(append:hash, rename:true, srcDir:src, distDir:dist, template:{{path}}{{name}}---{{append}}.{{extension}}) --> ' +
+            '<link rel="stylesheet" href="style.css"/>' +
+            ' <!-- enduncache --> ',
+        dist: '<link rel="stylesheet" href="style---bdcd878309.css"/>',
+        config: {
+            append: 'time',
+            rename: false,
+            srcDir: './',
+            distDir: './',
+            template: '{{path}}{{name}}_{{append}}.{{extension}}'
         }
     }
 ];
@@ -86,6 +152,17 @@ snippets.forEach(function (element, index) {
         }));
 
         stream.end();
+    });
+});
+
+after(function (done) {
+    fs.readdir('./dist', function(err, files) {
+        if(!err) {
+            files.forEach(function(file){
+                fs.unlinkSync('./dist/' + file);
+            });
+        }
+        done();
     });
 
 });

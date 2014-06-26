@@ -49,16 +49,22 @@ function mkdirRecursive(dir) {
     }
 }
 
-
 function swapValue(line, filename, append) {
     if (config.rename) {
         var opt = {};
-        opt.name = filename.split('/').reverse()[0].split('.')[0];
-        opt.extension = filename.split('/').reverse()[0].split('.').slice(1).join('.');
+        var prepend = '';
+        var filenameClean = filename.split('/').reverse()[0];
+
+        if(filenameClean[0] === '.') {
+            filenameClean = filenameClean.substr(1);
+            prepend = '.';
+        }
+
+        opt.name = prepend + filenameClean.split('.')[0];
+        opt.extension = filenameClean.split('.').slice(1).join('.');
         opt.path = filename.split('/').slice(0, -1).join('/');
         opt.path = (opt.path ? opt.path + '/' : '');
         opt.append = append;
-
         var template = hogan.compile(config.template);
         var newFileName = template.render(opt);
 
