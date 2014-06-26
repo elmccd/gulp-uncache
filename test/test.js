@@ -5,6 +5,7 @@ var assert = require('assert'),
     path = require('path'),
     uncache = require('../index');
 
+var styleCssHash = '47305974b6';
 
 var snippets = [
     {
@@ -22,7 +23,7 @@ var snippets = [
         src: '<!--uncache-->' +
             '<link rel="stylesheet" href="style.css"/>' +
             '<!--enduncache-->',
-        dist: '<link rel="stylesheet" href="style.css?bdcd878309"/>',
+        dist: '<link rel="stylesheet" href="style.css?' + styleCssHash + '"/>',
         config: {
             append: 'hash',
             srcDir: 'src',
@@ -111,7 +112,7 @@ var snippets = [
         src: ' <!-- uncache --> ' +
             '<link rel="stylesheet" href="style.css"/>' +
             ' <!-- enduncache --> ',
-        dist: '<link rel="stylesheet" href="style-bdcd878309.uncached.css"/>',
+        dist: '<link rel="stylesheet" href="style-' + styleCssHash + '.uncached.css"/>',
         config: {
             append: 'hash',
             rename: true,
@@ -125,7 +126,7 @@ var snippets = [
         src: ' <!-- uncache(append:hash, rename:true, srcDir:src, distDir:dist, template:{{path}}{{name}}---{{append}}.{{extension}}) --> ' +
             '<link rel="stylesheet" href="style.css"/>' +
             ' <!-- enduncache --> ',
-        dist: '<link rel="stylesheet" href="style---bdcd878309.css"/>',
+        dist: '<link rel="stylesheet" href="style---' + styleCssHash + '.css"/>',
         config: {
             append: 'time',
             rename: false,
