@@ -2,6 +2,7 @@
 var assert = require('assert'),
     gutil = require('gulp-util'),
     fs = require('fs'),
+    path = require('path'),
     uncache = require('../index');
 
 
@@ -156,10 +157,10 @@ snippets.forEach(function (element, index) {
 });
 
 after(function (done) {
-    fs.readdir('./dist', function(err, files) {
+    fs.readdir('dist', function(err, files) {
         if(!err) {
             files.forEach(function(file){
-                fs.unlinkSync('./dist/' + file);
+                fs.unlinkSync('dist' + path.sep + file);
             });
         }
         done();
