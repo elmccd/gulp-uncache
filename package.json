@@ -1,51 +1,41 @@
 {
-    "name": "gulp-uncache",
-    "version": "0.3.0",
-    "description": "Append unique string or md5 hash to paths in html files to force refresh - remove users cache app.js -> app_8j3d7a4f.js",
-    "license": "MIT",
-    "repository": "elmccd/gulp-uncache",
-    "author": {
-        "name": "Maciej Dudziński",
-        "email": "elmccd@gmail.com",
-        "url": "https://github.com/elmccd"
-    },
-    "config": {
-        "blanket": {
-            "pattern": "gulp-uncache/index.js"
-        }
-    },
-    "engines": {
-        "node": ">=0.10.0"
-    },
-    "scripts": {
-        "test": "cd test && mocha"
-    },
-    "files": [
-        "index.js"
-    ],
-    "keywords": [
-        "gulpplugin",
-        "gulpfriendly",
-        "gulp",
-        "plugin",
-        "cache",
-        "rev",
-        "uncache",
-        "refresh",
-        "remove",
-        "update"
-    ],
-    "dependencies": {
-        "blueimp-md5": "^1.1.0",
-        "gulp-util": "~2.2.14",
-        "hogan.js": "^3.0.0",
-        "through2": "~1.0.0"
-    },
-    "devDependencies": {
-        "karma-chrome-launcher": "^0.1.4",
-        "karma-mocha": "^0.1.4",
-        "karma-requirejs": "^0.2.2",
-        "mocha": "*",
-        "requirejs": "^2.1.14"
-    }
+  "name": "gulp-uncache",
+  "version": "0.3.0",
+  "description": "Append unique string or md5 hash to paths in html files to force refresh - remove users cache app.js -> app_8j3d7a4f.js",
+  "license": "MIT",
+  "repository": "elmccd/gulp-uncache",
+  "author": {
+    "name": "Maciej Dudziński",
+    "email": "elmccd@gmail.com",
+    "url": "https://github.com/elmccd"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "cd test && mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin",
+    "gulpfriendly",
+    "gulp",
+    "plugin",
+    "cache",
+    "rev",
+    "uncache",
+    "refresh",
+    "remove",
+    "update"
+  ],
+  "dependencies": {
+    "g-uncache": "0.0.0",
+    "gulp-util": "~2.2.14",
+    "through2": "~1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
 }

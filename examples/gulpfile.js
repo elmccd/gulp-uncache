@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    uncache = require('gulp-uncache'),
+    uncache = require('../index.js'), //require('gulp-uncache')
     clean = require('gulp-clean'),
     uglify = require('gulp-uglify'),
     runSequence = require('run-sequence'),
