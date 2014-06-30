@@ -3,7 +3,7 @@
 [![Downloads](http://img.shields.io/npm/dm/gulp-uncache.svg)](https://www.npmjs.org/package/gulp-uncache)
 [![Build Status](https://travis-ci.org/elmccd/gulp-uncache.svg?branch=master)](https://travis-ci.org/elmccd/gulp-uncache)
 [![Dependency Status](https://david-dm.org/elmccd/gulp-uncache.svg)](https://david-dm.org/elmccd/gulp-uncache)
-
+[![Coverage Status](https://img.shields.io/coveralls/elmccd/gulp-uncache.svg)](https://coveralls.io/r/elmccd/gulp-uncache?branch=master)
 > Append unique string or md5 hash to paths in html files to force refresh - remove users cache app.js -> app_8j3d7a4f.js
 
 Supported tags with `src` or `href` attributes.
