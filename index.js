@@ -12,7 +12,7 @@ var PLUGIN_NAME = 'gulp-uncache',
     through = require('through2'),
     gutil = require('gulp-util'),
     PluginError = gutil.PluginError,
-    g_uncache = require('g-uncache');
+    g_uncache = require('g-uncache').init;
 
 // Plugin level function(dealing with files)
 function unCache(params) {
