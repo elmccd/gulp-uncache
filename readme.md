@@ -1,5 +1,6 @@
 # gulp-uncache
 [![NPM version](https://badge.fury.io/js/gulp-uncache.svg)](http://badge.fury.io/js/gulp-uncache)
+[![Downloads](http://img.shields.io/npm/dm/gulp-uncache.svg)](https://www.npmjs.org/package/gulp-uncache)
 [![Build Status](https://travis-ci.org/elmccd/gulp-uncache.svg?branch=master)](https://travis-ci.org/elmccd/gulp-uncache)
 [![Dependency Status](https://david-dm.org/elmccd/gulp-uncache.svg)](https://david-dm.org/elmccd/gulp-uncache)
 
