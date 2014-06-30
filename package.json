@@ -13,7 +13,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "cd test && mocha"
+    "test": "cd test && istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "files": [
     "index.js"
@@ -31,8 +31,10 @@
     "update"
   ],
   "dependencies": {
+    "coveralls": "^2.10.1",
     "g-uncache": "^0.0.0",
     "gulp-util": "~2.2.14",
+    "mocha-lcov-reporter": "0.0.1",
     "through2": "~1.0.0"
   },
   "devDependencies": {

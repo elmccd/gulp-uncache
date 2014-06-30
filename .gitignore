@@ -1,4 +1,6 @@
 .idea/
 node_modules/
+coverage/
+test/coverage/
 examples/node_modules/
 npm-debug.log
