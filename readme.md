@@ -8,6 +8,13 @@
 
 Supported script and link tags with `src` or `href` attributes.
 
+
+**Disclaimer**
+This plugin is not 'gulp friendly' - it operates on files from outside of stream (Can't be fixed in this approach).
+
+If you care about that try [gulp-rev](https://www.npmjs.com/package/gulp-rev) or it's relatives.
+
+
 ## Install
 
 ```bash
