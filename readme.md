@@ -84,6 +84,14 @@ default `{{path}}{{name}}_{{append}}.{{extension}}`
 
 > Template for replace ([Hogan.js](https://github.com/twitter/hogan.js)). Available variables: `path`, `name`, `append`, `extension`
 
+###srcFileMap
+
+Type `Function`
+
+Parameters: `fileName`
+> Function for transforming src file path
+> At default returns `path.join(config.srcDir, fileName);`
+
 ##Inline options
 You can set options inline that way: (omit quotes sign)
 ```html
@@ -178,6 +186,9 @@ gulp.task('default', function () {
 * support css images (e.g. for often changing css sprites image)
 
 ## Changelog
+
+#####0.4.0-beta1
+- [supporting SrcFile as a mapping function](https://github.com/elmccd/uncache/pull/1)
 
 #####0.2.3
 - option template
