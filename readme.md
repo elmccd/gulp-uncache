@@ -20,7 +20,7 @@ If you care about that try [gulp-rev](https://www.npmjs.com/package/gulp-rev) or
 ```bash
 $ npm install --save-dev gulp-uncache
 ```
-##Effect
+## Effect
 ```html
 Before:
 <!-- uncache -->
@@ -37,9 +37,9 @@ After:
 <link rel="stylesheet" href="style_46fa2c8d60.css"/>
 ```
 
-##Options
+## Options
 
-###append
+### append
 
 
 Type `String`
@@ -54,7 +54,7 @@ default: `time`
 > `hash` - append md5 hash of file (prevent unnecessary refreshing file) **need correct srcDir & distDir**
 
 
-###rename
+### rename
 
 
 Type `Boolean`
@@ -64,7 +64,7 @@ default: `false`
 > If set to true rename file otherwise append string as url query string
 
 
-###srcDir
+### srcDir
 
 
 Type `String`
@@ -74,7 +74,7 @@ default: `./`
 > Path to dir with source files. (Used only when `rename:true`, or `append:'hash'`)
 
 
-###distDir
+### distDir
 
 
 Type `String`
@@ -83,7 +83,7 @@ Type `String`
 default: `./`
 > Path to dir where renamed files will be saved. (Used only when `rename:true`)
 
-###template
+### template
 
 Type `String`
 
@@ -91,7 +91,7 @@ default `{{path}}{{name}}_{{append}}.{{extension}}`
 
 > Template for replace ([Hogan.js](https://github.com/twitter/hogan.js)). Available variables: `path`, `name`, `append`, `extension`
 
-###srcFileMap
+### srcFileMap
 
 Type `Function`
 
@@ -99,7 +99,7 @@ Parameters: `fileName`
 > Function for transforming src file path
 > At default returns `path.join(config.srcDir, fileName);`
 
-##Inline options
+## Inline options
 You can set options inline that way: (omit quotes sign)
 ```html
 <!-- uncache(param:value, param:value) -->
@@ -108,7 +108,7 @@ You can set options inline that way: (omit quotes sign)
 ## Examples
 
 ### Basic
-#####gulpfile.js
+##### gulpfile.js
 ```javascript
 var gulp = require('gulp');
 var uncache = require('gulp-uncache');
@@ -124,7 +124,7 @@ gulp.task('default', function () {
 		.pipe(gulp.dest('dist'));
 });
 ```
-#####src/index.html
+##### src/index.html
 ```html
 <!DOCTYPE html>
 <html>
@@ -142,7 +142,7 @@ gulp.task('default', function () {
 </body>
 </html>
 ```
-#####dist/index.html
+##### dist/index.html
 ```html
 <!DOCTYPE html>
 <html>
@@ -157,7 +157,7 @@ gulp.task('default', function () {
 </html>
 ```
 ### With other plugins
-#####gulpfile.js
+##### gulpfile.js
 ```javascript
 var gulp = require('gulp');
 var usemin = require('gulp-usemin');
@@ -172,7 +172,7 @@ gulp.task('default', function () {
         .pipe(gulp.dest('dist'));
 });
 ```
-#####src/index.html
+##### src/index.html
 ```html
 <!--uncache-->
 <!-- build:js lib.js -->
@@ -182,7 +182,7 @@ gulp.task('default', function () {
 <!-- endbuild -->
 <!--enduncache-->
 ```
-#####dist/index.html
+##### dist/index.html
 ```html
 <script src="lib.js?1401393153336"></script>
 ```
@@ -194,31 +194,31 @@ gulp.task('default', function () {
 
 ## Changelog
 
-#####0.4.0-beta1
+##### 0.4.0-beta1
 - [supporting SrcFile as a mapping function](https://github.com/elmccd/uncache/pull/1)
 
-#####0.2.3
+##### 0.2.3
 - option template
 
-#####0.2.2
+##### 0.2.2
 - inline options
 - fixed parsing regexp
 
-#####0.2.0
+##### 0.2.0
 - option rename 
 - option append hash
 - allow both `'` and `"` in tags
 
-#####0.1.3
+##### 0.1.3
 - added append option
 
-#####0.1.2
+##### 0.1.2
 - fixed multi line blocks
 - fixed parsing lines with attributes
 - skipping incorrect tags
 - log info and errors
 
-#####0.1.1
+##### 0.1.1
 - initial release
 
 ## License
